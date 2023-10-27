@@ -51,7 +51,7 @@ def add_sup():
                         sup_name = ipt_sup_name
                         sup_item_int = ipt_sup_item_int
                         add_suppliers = f"{sup_id},{sup_name},{sup_item_int}"
-                        print(add_suppliers)
+                        # print(add_suppliers)
                         with open('suppliers.txt', 'a+') as file:
                             file.write(add_suppliers)
                             file.write('\n')
@@ -124,6 +124,19 @@ def manage_sup():
                     elif attr_to_modify == "2":
                         sup_name_txt = new_value
                     elif attr_to_modify == "3":
+                        found = False
+                        while not found:
+                            if not new_value:
+                                print('Cannot be empty')
+                                new_value = input('Please re-enter:').strip()  # Prompt user for new input
+                                continue
+                            try:
+                                new_value = int(new_value)
+                                found = True
+                            except:
+                                print('Must be a number')
+                                new_value = input('Please re-enter:').strip()
+
                         sup_item_int_txt = new_value
                     # Reconstruct and replace the original line
                     updated_line = f"{sup_id_txt},{sup_name_txt},{sup_item_int_txt}\n"
