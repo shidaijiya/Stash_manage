@@ -35,10 +35,18 @@ def add_sup():
                         if not ipt_sup_name:
                             print('Cannot be empty')
                             continue
-                        ipt_sup_item_int = input('Quantity of suppliers goods:').strip()
-                        if not ipt_sup_name:
-                            print('Cannot be empty')
-                            continue
+                        found = False
+                        while not found:
+                            ipt_sup_item_int = input('Quantity of suppliers goods:').strip()
+                            if not ipt_sup_item_int:
+                                print('Cannot be empty')
+                                continue
+                            try:
+                                ipt_sup_item_int = int(ipt_sup_item_int)
+                                found = True
+                                continue
+                            except:
+                                print('Must be a number')
                         sup_id = ipt_sup_id
                         sup_name = ipt_sup_name
                         sup_item_int = ipt_sup_item_int
